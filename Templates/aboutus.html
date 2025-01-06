@@ -50,6 +50,12 @@
             <p>Electronics</p></div>
     </div>
     <div class="footer"><p>Made with by ❤️ Sanjay</p></div>
-   
+   <script>
+    function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  document.getElementById('cart-count').innerText = ` (${cart.length})`;
+ }
+ document.addEventListener('DOMContentLoaded', updateCartCount);
+   </script>
 </body>
 </html>

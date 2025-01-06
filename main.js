@@ -1,7 +1,7 @@
 function limitedwords(str, n) {
     return str.split("").slice(0, n).join("") + "...";
 }
-// Fetch and display products
+
 let allProducts = []; 
 
 fetch("https://fakestoreapi.com/products")
