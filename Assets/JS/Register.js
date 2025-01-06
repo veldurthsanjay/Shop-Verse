@@ -43,3 +43,8 @@ let register=document.querySelector('.register').addEventListener('click',(e)=>{
     }
 
 })
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').innerText = ` (${cart.length})`;
+  }
+  document.addEventListener('DOMContentLoaded', updateCartCount);
