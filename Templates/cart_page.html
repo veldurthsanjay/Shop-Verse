@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../Assets/CSS/cart_page.css">
+    <link rel="stylesheet" href="../Assets/CSS/Header.css">
+    <link rel="stylesheet" href="../Assets/CSS/login.css">
+    <link rel="stylesheet" href="../Assets/CSS/Footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header id="header">
+        <div id="logo"><h2>Tech Shop</h2></div>
+         <div id="nav-links">
+             <a class="active" href="../index.html">Home</a>
+             <a href="./product_page.html">Products</a>
+             <a href="./aboutus.html">About</a>
+             <a href="./contact.html">Contact</a>
+         </div>
+        <div id="nav-buttons">
+         <button><a href="./login.html"><span><i class="fa-solid fa-right-to-bracket"></i></span>Login</a></button>
+         <button><a href="./Register.html"><span><i class="fa-solid fa-user-plus"></i></span>Register</a></button>
+          <button><a href="./cart_page.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Cart<span id="cart-count">(0)</span></a></button>
+        </div>
+     </header>
+     <div class="login">
+        <h2>Cart</h2>
+        <span class="line"></span>
+    </div>
+
+    <div id="Total-container">
+        <div id="cart-container"></div>
+        <div id="order-summary" class="order-summary"></div>
+    </div>
+    <div class="footer"><p>Made with ❤️ by Sanjay</p></div>
+    <script src="../Assets/JS/cart_page.js"></script>
+    <!-- <script src="../main.js"></script> -->
+</body>
+</html>
