@@ -56,6 +56,7 @@ document.getElementById("categoriesbtns").addEventListener("click", (e) => {
         filterProducts("electronics");
     }
 });
+ 
 
 function addToCart(productId) {
     const product = allProducts.find(item => item.id === productId);

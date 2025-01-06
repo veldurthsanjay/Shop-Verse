@@ -44,11 +44,10 @@ function displayCart() {
                 <div class="cart-item-info">
                     <h4>${limitDescription(item.title)}</h4> 
                     <div class="cart-item-total">
-                        <p>1×: $${(item.price * item.quantity).toFixed(2)}</p> 
+                        <p> ${item.quantity} × $${(item.price).toFixed(2)}</p> 
                     </div>
                 </div>
                 <div class="quantity-control">
-                    <!-- Quantity Control: Decrement and Increment -->
                     <button onclick="decreaseQuantity(${index})">-</button>
                     <span id="quantity-${index}">${item.quantity}</span> 
                     <button onclick="increaseQuantity(${index})">+</button>
@@ -92,10 +91,8 @@ function decreaseQuantity(index) {
 
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
-    document.getElementById('cart-count').textContent = ` (${cartCount}) `;
+    document.getElementById('cart-count').innerText = ` (${cart.length})`;
 }
-
 function displayOrderSummary() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalProducts = cart.reduce((total, item) => total + item.quantity, 0);
@@ -110,27 +107,22 @@ function displayOrderSummary() {
         return; 
     }
 
-    // Create the order summary heading
     const heading = document.createElement("h2");
     heading.textContent = "Order Summary";
     orderSummaryContainer.appendChild(heading);
 
-    // Create the products info
     const productsInfo = document.createElement("p");
     productsInfo.innerHTML = `Products (${totalProducts}) <span>$${totalPrice}</span>`;
     orderSummaryContainer.appendChild(productsInfo);
 
-    // Create the shipping info
     const shippingInfo = document.createElement("p");
     shippingInfo.innerHTML = `Shipping <span>$${shippingCost}</span>`;
     orderSummaryContainer.appendChild(shippingInfo);
 
-    // Create the total amount
     const totalAmountInfo = document.createElement("p");
     totalAmountInfo.innerHTML = `<strong>Total amount</strong> <strong>$${totalAmount}</strong>`;
     orderSummaryContainer.appendChild(totalAmountInfo);
 
-    // Create the checkout button
     const checkoutButton = document.createElement("button");
     checkoutButton.textContent = "Go to checkout";
     checkoutButton.classList.add("checkout-button");
