@@ -38,3 +38,9 @@ let form=document.getElementById('send').addEventListener('click',(e)=>{
         }, 500);
       }
 })
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  document.getElementById('cart-count').innerText = ` (${cart.length})`;
+}
+document.addEventListener('DOMContentLoaded', updateCartCount);
