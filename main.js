@@ -1,18 +1,31 @@
-function limitedwords(str, n) {
-    return str.split("").slice(0, n).join("") + "...";
+ function limitedwords(str, n) {
+    return str.length > n ? str.slice(0, n) + "..." : str;
 }
 
-let allProducts = []; 
+let allProducts = [];
 
-fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => {
-        allProducts = data; 
-        displayProducts(allProducts); 
-    })
-    .catch((error) => {
-        console.log("Error:", error);
-    });
+function fetchProducts() {
+    fetch("https://fakestoreapi.com/products")
+        .then((response) => response.json())
+        .then((data) => {
+            allProducts = data;
+            localStorage.setItem('products', JSON.stringify(allProducts));
+            displayProducts(allProducts);
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+        });
+}
+
+function loadProducts() {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+        allProducts = JSON.parse(storedProducts);
+        displayProducts(allProducts);
+    } else {
+        fetchProducts();
+    }
+}
 
 function displayProducts(products) {
     const container = document.getElementById("container");
@@ -35,15 +48,16 @@ function displayProducts(products) {
         .join("");
     container.innerHTML = productHTML;
 }
+
 function filterProducts(category) {
     const filteredProducts = allProducts.filter(
         (product) => product.category.toLowerCase() === category.toLowerCase()
-    ); 
-    displayProducts(filteredProducts); 
+    );
+    displayProducts(filteredProducts);
 }
 
 document.getElementById("categoriesbtns").addEventListener("click", (e) => {
-    const category = e.target.id; 
+    const category = e.target.id;
     if (category === "all") {
         displayProducts(allProducts);
     } else if (category === "mens") {
@@ -56,13 +70,12 @@ document.getElementById("categoriesbtns").addEventListener("click", (e) => {
         filterProducts("electronics");
     }
 });
- 
 
 function addToCart(productId) {
     const product = allProducts.find(item => item.id === productId);
 
     if (!product) {
-        return; 
+        return;
     }
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -76,9 +89,13 @@ function addToCart(productId) {
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
 }
+
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     document.getElementById('cart-count').innerText = ` (${cart.length})`;
 }
 
-document.addEventListener('DOMContentLoaded', updateCartCount);
+document.addEventListener('DOMContentLoaded', () => {
+    updateCartCount();
+    loadProducts();
+});
