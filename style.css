@@ -70,3 +70,7 @@
     color:white;
     border-radius: 5px;
 }
+#container .productcard button:hover{
+    background-color:rgb(32, 30, 30);
+    cursor: pointer;
+}
