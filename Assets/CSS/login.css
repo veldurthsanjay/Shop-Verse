@@ -2,10 +2,10 @@
     margin: 0;
     font-family:Arial, Helvetica, sans-serif;
 }
-.login{
-    margin-top:30px;
+.login h2{
+    margin-top:10px;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
 }
 .line{
     display: block;
