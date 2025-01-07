@@ -3,7 +3,6 @@
 }
 
 let allProducts = [];
-
 function fetchProducts() {
     fetch("https://fakestoreapi.com/products")
         .then((response) => response.json())
@@ -26,7 +25,6 @@ function loadProducts() {
         fetchProducts();
     }
 }
-
 function displayProducts(products) {
     const container = document.getElementById("container");
     const productHTML = products
@@ -48,7 +46,6 @@ function displayProducts(products) {
         .join("");
     container.innerHTML = productHTML;
 }
-
 function filterProducts(category) {
     const filteredProducts = allProducts.filter(
         (product) => product.category.toLowerCase() === category.toLowerCase()
@@ -77,7 +74,6 @@ function addToCart(productId) {
     if (!product) {
         return;
     }
-
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const productInCart = cart.find(item => item.id === productId);
 
