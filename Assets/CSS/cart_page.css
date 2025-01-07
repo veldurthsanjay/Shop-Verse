@@ -30,6 +30,10 @@
 .empty-cart i {
     padding-right: 10px;
 }
+
+#cart-count{
+    font-weight: bolder;
+}
 #Total-container{
       margin-top:50px;
       display: grid;
